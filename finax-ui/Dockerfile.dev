@@ -1,0 +1,39 @@
+
+
+# Usando a imagem do Node.js como base
+FROM node:14
+
+
+# Diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Copiar o package.json e o package-lock.json para o contêiner
+COPY package.json .
+
+COPY package-lock.json .
+
+# Instalar as dependências
+RUN npm install
+
+# Copiar o restante do código da aplicação
+COPY . .
+
+# Porta que a aplicação React escuta
+#EXPOSE 3000
+
+# Comando para iniciar a aplicação React
+CMD [ "npm", "run", "start.dev" ]
+
+
+# FROM node:8
+
+
+
+# COPY package.json .
+# COPY yarn.lock .
+# RUN yarn
+
+# COPY . ./code
+
+# #EXPOSE 3000
+# CMD [ "npm", "run", "start.dev" ]
